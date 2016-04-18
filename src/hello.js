@@ -14,7 +14,7 @@ ReactDOM.render(<Hello/>, document.getElementById('hello'));
 var Goodbye = React.createClass({
   render:function(){
       return(
-         <div><div>Goodbye!</div>
+         <div><div>Goodbye</div>
          <p>child node</p></div>  
       );
   }
@@ -35,4 +35,6 @@ var Comment = React.createClass({
   }
 });
 
-ReactDOM.render(<Comment author={comments[0].author} text={comments[0].text}/>, document.getElementById('comment'));
+ReactDOM.render(<Comment author={comments[0].author} text={comments[0].text}/>, document.getElementById('comment1'));
+
+ReactDOM.render(<Comment author={comments[1].author} text={comments[1].text}/>, document.getElementById('comment2'))

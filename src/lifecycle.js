@@ -3,17 +3,17 @@ var ReactDOM = require('react-dom');
 
 var Lifecycle = React.createClass({
   getInitialState: function() {
-    alert("Initial State");
+    // alert("Initial State");
     return {};
   },
   componentWillMount: function() {
-    alert("Component Will Mount");
+    // alert("Component Will Mount");
   },
   componentDidMount: function() {
-    alert("Component Did Mount")
+    // alert("Component Did Mount")
   },
   render: function(){
-    alert("render");
+    // alert("render");
     return (
       <div>
         Lifecycle Component
