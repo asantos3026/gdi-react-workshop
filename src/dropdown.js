@@ -21,10 +21,11 @@ var DropdownMenu = React.createClass({
 	render: function() {
 		return (
 			<div className='dropdown-wrapper' onClick={ this.toggleMenu }>
-				<button className='btn btn-info'>
+				<button className={ (this.state.onClick? 
+					"btn-danger" : "btn btn-info") }>
 					Dropdown Menu
 				</button>
-				<ul>
+				<ul style={ this.state.open ? styles.open : styles.closed }>
 					<li>Option #1</li>
 					<li>Option #2</li>
 					<li>Option #3</li>
