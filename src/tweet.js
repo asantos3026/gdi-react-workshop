@@ -35,11 +35,13 @@ var Twitter = React.createClass({
   // },
   render: function () {
     return (
+    <div>
       <div className="twitter">
         <h1>Tweets</h1>
         {/* Render TweetForm component here */}
         {/* Render TweetList component here */}
       </div>
+    </div>
     );
   }
 });
