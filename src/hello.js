@@ -4,7 +4,9 @@ var ReactDOM = require('react-dom');
 var Hello = React.createClass({
   render:function(){
     return(
-      <div>React is awesome!</div> 
+      <div>
+        <a href="http://asantos.io">Check Out My Work</a>
+      </div> 
     );
   }
 });
