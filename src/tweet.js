@@ -35,13 +35,11 @@ var Twitter = React.createClass({
   // },
   render: function () {
     return (
-    <div>
       <div className="twitter">
         <h1>Tweets</h1>
-        {/* Render TweetForm component here */}
-        {/* Render TweetList component here */}
+        <TweetForm />
+        <TweetList data={ this.props.data } />
       </div>
-    </div>
     );
   }
 });
@@ -50,7 +48,7 @@ var TweetForm = React.createClass({
   render: function () {
     return (
       <form className="tweetForm">
-        <div><TweetList/></div>
+        TweetForm component
       </form>
     );
   }
@@ -58,9 +56,14 @@ var TweetForm = React.createClass({
 
 var TweetList = React.createClass({
   render: function () {
+    var tweetData = this.props.data;
+    var tweetNodes = tweetData.map(function (tweet) {
+      return <Tweet author={ tweet.author } text={ tweet.text }/> 
+    });
+
     return (
       <div className="tweetList">
-        <div><Tweet/></div>
+        { tweetNodes }
       </div>
     );
   }
@@ -70,18 +73,14 @@ var Tweet = React.createClass({
   render: function () {
     return (
       <div className="tweet">
-        <p>{ this.props.text }</p>
-        <h1>{ this.props.author }</h1>
+        <h2>{ this.props.text }</h2>
+        <span> - { this.props.author }</span>
       </div>
     );
   }
 });
 
-ReactDOM.render(<Tweet author={data[0].author} text={data[0].text}/>, document.getElementById('tweet1'));
-
-ReactDOM.render(<Tweet author={data[1].author} text={data[1].text}/>, document.getElementById('tweet2'));
-
 ReactDOM.render(
-  <Twitter />,
+  <Twitter data={data} />,
   document.getElementById('tweets')
 );
