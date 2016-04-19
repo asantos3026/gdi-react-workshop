@@ -1,25 +1,17 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var data = [
-  {
-      "author": "Michael Scott",
-      "text": "Would I rather be feared or loved? Easy, both. I want people to be afraid of how much they love me."
-  },
-  {
-      "author": "Jeff Bezos",
-      "text": "In the end, we are our choices."
-  }
-];
-
 var Twitter = React.createClass({
-  // loadTweetsFromServer: function () {
-  //   // GET updated set of tweets from database
-  //   $.get(this.props.url, function (data) {
-  //       // Set state in step 6 of the exercise!
-  //     }.bind(this)
-  //   );
-  // },
+  getInitialState: function () {
+    return { data: [] };
+  },
+  loadTweetsFromServer: function () {
+    // GET updated set of tweets from database
+    $.get(this.props.url, function (data) {
+        this.setState({ data: data });
+      }.bind(this)
+    );
+  },
   // handleTweetSubmit: function (author, text) {
   //   var tweet = { author: author, text: text };
   //
@@ -29,16 +21,16 @@ var Twitter = React.createClass({
   //     }.bind(this)
   //   );
   // },
-  // componentDidMount: function () {
-  //   // Set this.state.data to most recent set of tweets from database
-  //   this.loadTweetsFromServer();
-  // },
+  componentDidMount: function () {
+    // Set this.state.data to most recent set of tweets from database
+    this.loadTweetsFromServer();
+  },
   render: function () {
     return (
       <div className="twitter">
         <h1>Tweets</h1>
         <TweetForm />
-        <TweetList data={ this.props.data } />
+        <TweetList data={ this.state.data } />
       </div>
     );
   }
@@ -58,7 +50,7 @@ var TweetList = React.createClass({
   render: function () {
     var tweetData = this.props.data;
     var tweetNodes = tweetData.map(function (tweet) {
-      return <Tweet author={ tweet.author } text={ tweet.text }/> 
+      return <Tweet author={ tweet.author } text={ tweet.text } />
     });
 
     return (
@@ -81,6 +73,6 @@ var Tweet = React.createClass({
 });
 
 ReactDOM.render(
-  <Twitter data={data} />,
+  <Twitter url="tweets.json" />,
   document.getElementById('tweets')
 );
